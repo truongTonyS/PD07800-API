@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "540864483397",
+    "project_id": "demologinfinre",
+    "storage_bucket": "demologinfinre.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:540864483397:android:b86239c0b158b6f201132c",
+        "android_client_info": {
+          "package_name": "edu.com.demologinfinrebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-HrOJvCOKLP3ua_Ixy6eBVY5STbmVqO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
