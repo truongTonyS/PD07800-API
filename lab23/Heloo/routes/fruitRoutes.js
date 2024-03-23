@@ -38,7 +38,7 @@ router.post('/add', Upload.array('images'), async(req, res) =>{
 })
 //
 router.get('/list', async(req, res) =>{
-    const result = await modeFruit.find()
+    const result = await modeFruit.find({})
     try {
         res.send(result)
     } catch (error) {
