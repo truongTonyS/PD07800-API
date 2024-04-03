@@ -34,9 +34,23 @@ router.post('/add', async(req, res) =>{
 })
 //
 router.get('/list', async(req, res) =>{
-    const result = await modeDistributor.find({})
+    
     try {
-        res.send(result)
+        const result = await modeDistributor.find({})
+        // res.send(result)
+        if (result){
+            res.json({
+                "status" :200,
+                "message": "list ",
+                "data": result
+            })
+        }else{
+            res.json({
+                "status" :400,
+                "message": "lỗi không có dữ liệu ",
+                "data": result
+            })
+        }    
     } catch (error) {
         console.log(error);
     }
@@ -46,7 +60,12 @@ router.get('/getbyid/:id', async(req, res) =>{
     const result = await modeDistributor.findById(req.params.id)
     try {
        if(result){
-        res.send(result)
+        // res.send(result)
+        res.json({
+            "status" :200,
+            "message": "đã tìm thấy  ",
+            "data": result
+        })
        }else{
         res.json({
             "status" :400,
@@ -69,7 +88,13 @@ router.patch('/edit/:id', async(req, res) =>{
     try {
        if(result){
        const rs = await result.save()
-        res.send(rs)
+        // res.send(rs)
+        res.json({
+            "status" :200,
+            "message": "cập nhật thành công  ",
+            "data": rs
+        })
+
        }else{
         res.json({
             "status" :400,
@@ -113,6 +138,34 @@ router.delete('/delete/:id', async(req, res) =>{
         }
     }
 })
+// router.get('/get-list-ditributor', async(req, res) =>{
+//     try {
+//         //lấy danh sách theo thứ tự distributors mới nhất
+//        if(data){
+//         res.json({//trả về danh sách
+//             "status" :200,
+//             "message": "Thành công  ",
+//             "data": data
+//         })
+//        }else{
+//         //nếu thêm không thành công result null , thông báo khôn thành công
+//         res.json({
+//             "status" :400,
+//             "message": "lỗi , không thành công  ",
+//             "data": []
+//         })
+
+//        }
+//     } catch (error) {
+//             console.log(error);  
+     
+//     }
+// });
+
+
+
+
+
 
 
 
