@@ -83,7 +83,7 @@ router.get('/getbyid/:id', async(req, res) =>{
         }
     }
 })
-router.patch('/edit/:id', async(req, res) =>{
+router.put('/edit/:id', async(req, res) =>{
     const result = await modeDistributor.findByIdAndUpdate(req.params.id,req.body)
     try {
        if(result){
@@ -138,6 +138,30 @@ router.delete('/delete/:id', async(req, res) =>{
         }
     }
 })
+router.get('/search', async(req, res) =>{
+    
+    try {
+       const key = req.query.key
+       const result = await modeDistributor.find({name:{"$regex":key,"$options":"i"}})
+                                        .sort({createAT:-1})
+        if (result){
+            res.json({
+                "status" :200,
+                "message": "Tìm thấy ",
+                "data": result
+            })
+        }else{
+            res.json({
+                "status" :400,
+                "message": " không có dữ liệu ",
+                "data": result
+            })
+        }    
+    } catch (error) {
+        console.log(error);
+    }
+})
+//
 // router.get('/get-list-ditributor', async(req, res) =>{
 //     try {
 //         //lấy danh sách theo thứ tự distributors mới nhất
