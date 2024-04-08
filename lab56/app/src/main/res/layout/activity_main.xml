@@ -27,5 +27,12 @@
         android:id="@+id/btnDistributor"
 
         />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:id="@+id/btnRegister"
+
+        />
 
 </LinearLayout>
