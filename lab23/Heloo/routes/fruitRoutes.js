@@ -12,10 +12,10 @@ router.get('/test', function(reg, res, next){
 
 router.post('/add', Upload.array('images'), async(req, res) =>{
     try{
-        const {files} = req
-        const urlImages = files.map((file)=>`${req.protocol}://${req.get('hosst')}/uploads/${file.filename}`)
+        // const {files} = req
+        // const urlImages = files.map((file)=>`${req.protocol}://${req.get('hosst')}/uploads/${file.filename}`)
         const model = new modeFruit(req.body)
-        model.images = urlImages
+        // model.images = urlImages
         const result = await model.save(); //thêm  dl vaò đata
         if (result){
             res.json({

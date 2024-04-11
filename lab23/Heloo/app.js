@@ -15,6 +15,7 @@ var DistributorsRoutes = require('./routes/distributorRoutes');
 var fruitsRoutes = require('./routes/fruitRoutes');
 var uploadsRoutes = require('./routes/uploadRouter');
 var emailRoutes = require('./routes/emailRoutes');
+var loginRoutes = require('./routes/loginRoutes');
 
 var app = express();
 
@@ -34,6 +35,8 @@ app.use('/distributors', DistributorsRoutes);
 app.use('/fruits', fruitsRoutes);
 app.use('/uploads', uploadsRoutes);
 app.use('/sendmail', emailRoutes);
+app.use('/checklogin', loginRoutes );
+
 
 
 

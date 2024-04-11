@@ -9,42 +9,53 @@ router.get('/test', function(reg, res, next){
     res.send('respond with a resource user test');
 });
 
-//add data
+// add data
 
-router.post('/add', Upload.single('avater'), async(req, res) =>{
+// router.post('/add', Upload.single('avater'), async(req, res) =>{
+//     try{
+//         const {file} = req
+//         const urlImages = `${req.protocol}://${req.get('host')}/uploads/${file.fieldname}`
+//         const model = new modeUser(req.body)
+//         model.avater =  urlImages
+//         const result = await model.save(); //thêm  dl vaò đata
+//         if (result){
+//             const mailOption = {
+//                 from: 'truongnqpd07800@fpt.edu.vn',
+//                 to:model.email, //mail người dùng
+//                 subject:'wellcom to nodejs',
+//                 text:'chúc mừng bạn đã đăng ký thành công' 
+//             }
+//             await Transporter.sendMail(mailOption)
+//             res.json({
+//                 "status" :200,
+//                 "message": "Thêm thành công",
+//                 "data": result
+//             })
+//         }else{
+//             res.json({
+//                 "status" :400,
+//                 "message": "Thêm thất bại",
+//                 "data": result
+//             })
+//         }
+//         // res.send(result)
+//     }catch(error){
+//         console.log(error);
+
+//     }
+// })
+
+
+router.post('/add', async(req, res) =>{
     try{
-        const {file} = req
-        const urlImages = `${req.protocol}://${req.get('host')}/uploads/${file.fieldname}`
         const model = new modeUser(req.body)
-        model.avater =  urlImages
         const result = await model.save(); //thêm  dl vaò đata
-        if (result){
-            const mailOption = {
-                from: 'truongnqpd07800@fpt.edu.vn',
-                to:model.email, //mail người dùng
-                subject:'wellcom to nodejs',
-                text:'chúc mừng bạn đã đăng ký thành công' 
-            }
-            await Transporter.sendMail(mailOption)
-            res.json({
-                "status" :200,
-                "message": "Thêm thành công",
-                "data": result
-            })
-        }else{
-            res.json({
-                "status" :400,
-                "message": "Thêm thất bại",
-                "data": result
-            })
-        }
-        // res.send(result)
+        res.send(result)
     }catch(error){
         console.log(error);
 
     }
 })
-//
 router.get('/list', async(req, res) =>{
     const result = await modeUser.find({})
     try {
